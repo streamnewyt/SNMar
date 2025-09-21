@@ -1,0 +1,36 @@
+name: Fetch Air Quality Data
+
+on:
+  workflow_dispatch: # Permite iniciar manualmente pela aba "Actions" do GitHub
+  schedule:
+    - cron: '0 */2 * * *' # Executa a cada 2 horas
+
+jobs:
+  fetch-data:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Permissão para o Action escrever no seu repositório
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install node-fetch@2 # Instala a biblioteca para fazer requisições web
+
+      - name: Run fetch script
+        run: node scripts/fetch_aq_data.js # Executa o nosso script
+
+      - name: Commit and push if changed
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'Atualização automática dos dados de qualidade do ar'
+          file_pattern: 'data/air-quality.json'
+          commit_user_name: 'GitHub Actions Bot'
+          commit_user_email: 'streamnew@post.com'
+          commit_author: 'GitHub Actions Bot <streamnew@post.com>'
