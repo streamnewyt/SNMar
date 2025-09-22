@@ -1,10 +1,8 @@
-// scripts/fetch_aq_data.js (Versão Final com 2 API Calls)
+// scripts/fetch_aq_data.js (Versão Completa e Corrigida)
 
 const fetch = require('node-fetch');
 const fs = require('fs');
 const path = require('path');
-
-// Arquivo: scripts/fetch_aq_data.js
 
 const VOLCANOES = [
     // Américas
@@ -35,8 +33,6 @@ const VOLCANOES = [
     { name: "Karymsky", latitude: 54.05, longitude: 159.45 } // Kamchatka
 ];
 
-
-// Parâmetros para cada API
 const AIR_QUALITY_PARAMS = ["sulphur_dioxide", "carbon_monoxide", "nitrogen_dioxide", "carbon_dioxide"];
 const WEATHER_PARAMS = ["wind_speed_10m", "wind_direction_10m"];
 
@@ -47,7 +43,6 @@ async function fetchVolcanoData(volcano) {
     try {
         console.log(`Buscando dados para: ${volcano.name}`);
         
-        // Faz as duas chamadas em paralelo
         const [aqResponse, weatherResponse] = await Promise.all([
             fetch(aqApiUrl).then(res => res.json()),
             fetch(weatherApiUrl).then(res => res.json())
@@ -57,7 +52,6 @@ async function fetchVolcanoData(volcano) {
         if (weatherResponse.error) throw new Error(`Erro na API de Clima: ${weatherResponse.reason}`);
         if (!aqResponse.hourly || !aqResponse.hourly.time) throw new Error(`Resposta de Qualidade do Ar inválida.`);
 
-        // Combina os resultados
         const combinedHourly = { ...aqResponse.hourly, ...weatherResponse.hourly };
         const combinedUnits = { ...aqResponse.hourly_units, ...weatherResponse.hourly_units };
 
@@ -89,19 +83,33 @@ async function fetchVolcanoData(volcano) {
 }
 
 async function main() {
-    console.log("Iniciando a busca de dados...");
-    const allData = [];
-    for (const volcano of VOLCANOES) {
-        const data = await fetchVolcanoData(volcano);
-        if (data) allData.push(data);
-    }
-    if (allData.length > 0) {
+    console.log("Iniciando a busca de dados para todos os vulcões em paralelo...");
+    
+    // Cria um array de promessas, uma para cada vulcão
+    const promises = VOLCANOES.map(volcano => fetchVolcanoData(volcano));
+    
+    // Executa todas as buscas ao mesmo tempo e aguarda a conclusão
+    const results = await Promise.all(promises);
+    
+    // Filtra apenas os resultados que foram bem-sucedidos (não nulos)
+    const volcanoData = results.filter(data => data !== null);
+    
+    if (volcanoData.length > 0) {
+        // Cria um objeto final que "envelopa" os dados dos vulcões.
+        const finalDataObject = {
+            lastUpdated: new Date().toISOString(), // Adiciona a data e hora exata da execução
+            volcanoes: volcanoData // Adiciona a lista de vulcões
+        };
+
         const outputPath = path.join(__dirname, '..', 'data', 'air-quality.json');
         fs.mkdirSync(path.dirname(outputPath), { recursive: true });
-        fs.writeFileSync(outputPath, JSON.stringify(allData, null, 2));
-        console.log(`Dados salvos com sucesso em: ${outputPath}`);
+        
+        // Salva o novo objeto completo no arquivo JSON.
+        fs.writeFileSync(outputPath, JSON.stringify(finalDataObject, null, 2));
+        
+        console.log(`Dados de ${volcanoData.length} vulcões salvos com sucesso em: ${outputPath}`);
     } else {
-        console.log("Nenhum dado foi buscado.");
+        console.log("Nenhum dado foi buscado com sucesso.");
     }
     console.log("Processo finalizado.");
 }
