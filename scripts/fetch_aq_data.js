@@ -5,7 +5,8 @@ const fs = require('fs');
 const path = require('path');
 
 const VOLCANOES = [
-    { name: "Kilauea", latitude: 19.4069, longitude: -155.2834 }
+    { name: "Kilauea", latitude: 19.4069, longitude: -155.2834 },
+    { name: "Poás", latitude: 10.19751, longitude: -84.23084 }
 ];
 
 // Parâmetros para cada API
