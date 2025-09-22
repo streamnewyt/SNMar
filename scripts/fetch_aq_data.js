@@ -4,10 +4,37 @@ const fetch = require('node-fetch');
 const fs = require('fs');
 const path = require('path');
 
+// Arquivo: scripts/fetch_aq_data.js
+
 const VOLCANOES = [
-    { name: "Kilauea", latitude: 19.4069, longitude: -155.2834 },
-    { name: "Poás", latitude: 10.19751, longitude: -84.23084 }
+    // Américas
+    { name: "Popocatépetl", latitude: 19.0236, longitude: -98.6225 }, // México
+    { name: "Fuego", latitude: 14.473, longitude: -90.88 }, // Guatemala
+    { name: "Reventador", latitude: -0.0775, longitude: -77.6561 }, // Equador
+    { name: "Kilauea", latitude: 19.4069, longitude: -155.2834 }, // EUA (Havaí)
+    { name: "Villarrica", latitude: -39.42, longitude: -71.93 }, // Chile
+
+    // Europa
+    { name: "Etna", latitude: 37.751, longitude: 14.9934 }, // Itália
+    { name: "Stromboli", latitude: 38.789, longitude: 15.213 }, // Itália
+
+    // Ásia-Pacífico
+    { name: "Aso", latitude: 32.884, longitude: 131.104 }, // Japão
+    { name: "Sakurajima", latitude: 31.585, longitude: 130.657 }, // Japão
+    { name: "Semeru", latitude: -8.108, longitude: 112.922 }, // Indonésia
+    { name: "Lewotolo", latitude: -8.272, longitude: 123.505 }, // Indonésia
+    { name: "Ibu", latitude: 1.488, longitude: 127.63 }, // Indonésia
+    { name: "Dukono", latitude: 1.693, longitude: 127.878 }, // Indonésia
+
+    // África
+    { name: "Nyiragongo", latitude: -1.52, longitude: 29.25 }, // RD Congo
+
+    // Rússia
+    { name: "Shiveluch", latitude: 56.653, longitude: 161.36 }, // Kamchatka
+    { name: "Ebeko", latitude: 50.686, longitude: 156.014 }, // Ilhas Curilas
+    { name: "Karymsky", latitude: 54.05, longitude: 159.45 } // Kamchatka
 ];
+
 
 // Parâmetros para cada API
 const AIR_QUALITY_PARAMS = ["sulphur_dioxide", "carbon_monoxide", "nitrogen_dioxide", "carbon_dioxide"];
