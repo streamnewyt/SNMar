@@ -11,6 +11,7 @@ const VOLCANOES = [
     { name: "Reventador", latitude: -0.0775, longitude: -77.6561 }, // Equador
     { name: "Kilauea", latitude: 19.4069, longitude: -155.2834 }, // EUA (Havaí)
     { name: "Villarrica", latitude: -39.42, longitude: -71.93 }, // Chile
+    { name: "Poás", latitude: 10.19751, longitude: -84.23084 }, // Costa Rica
 
     // Europa
     { name: "Etna", latitude: 37.751, longitude: 14.9934 }, // Itália
