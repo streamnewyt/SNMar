@@ -24,6 +24,8 @@ const VOLCANOES = [
     { name: "Lewotolo", latitude: -8.272, longitude: 123.505 }, // Indonésia
     { name: "Ibu", latitude: 1.488, longitude: 127.63 }, // Indonésia
     { name: "Dukono", latitude: 1.693, longitude: 127.878 }, // Indonésia
+    { name: "Krakatau", latitude: -6.1024, longitude: 105.4231 }, // Indonésia
+
 
     // África
     { name: "Nyiragongo", latitude: -1.52, longitude: 29.25 }, // RD Congo
