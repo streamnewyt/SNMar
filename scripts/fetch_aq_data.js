@@ -1,4 +1,4 @@
-// scripts/fetch_aq_data.js (Versão Completa e Corrigida)
+// scripts/fetch_aq_data.js 
 
 const fetch = require('node-fetch');
 const fs = require('fs');
@@ -10,12 +10,14 @@ const VOLCANOES = [
     { name: "Fuego", latitude: 14.473, longitude: -90.88 }, // Guatemala
     { name: "Reventador", latitude: -0.0775, longitude: -77.6561 }, // Equador
     { name: "Kilauea", latitude: 19.4069, longitude: -155.2834 }, // EUA (Havaí)
-    { name: "Villarrica", latitude: -39.42, longitude: -71.93 }, // Chile
+   // { name: "Villarrica", latitude: -39.42, longitude: -71.93 }, // Chile
     { name: "Poás", latitude: 10.19751, longitude: -84.23084 }, // Costa Rica
+    { name: "Santiaguito", latitude: 14.757, longitude: -91.552 }, // Guatemala
 
     // Europa
     { name: "Etna", latitude: 37.751, longitude: 14.9934 }, // Itália
     { name: "Stromboli", latitude: 38.789, longitude: 15.213 }, // Itália
+    { name: "Piton de la Fournaise", latitude: -21.244, longitude: 55.708 }, // Reunião (França)
 
     // Ásia-Pacífico
     { name: "Aso", latitude: 32.884, longitude: 131.104 }, // Japão
@@ -26,13 +28,19 @@ const VOLCANOES = [
     { name: "Dukono", latitude: 1.693, longitude: 127.878 }, // Indonésia
     { name: "Krakatau", latitude: -6.1024, longitude: 105.4231 }, // Indonésia
 
+    { name: "Tambora", latitude: -8.25, longitude: 118.00 }, // Indonésia
+    { name: "Mayon", latitude: 13.257, longitude: 123.685 }, // Filipinas
+    { name: "Kanlaon", latitude: 10.412, longitude: 123.132 }, // Filipinas
+
+    // Antártica
+    { name: "Erebus", latitude: -77.53, longitude: 167.17 }, // Antártica
 
     // África
-    { name: "Nyiragongo", latitude: -1.52, longitude: 29.25 }, // RD Congo
+   // { name: "Nyiragongo", latitude: -1.52, longitude: 29.25 }, // RD Congo
 
     // Rússia
     { name: "Shiveluch", latitude: 56.653, longitude: 161.36 }, // Kamchatka
-    { name: "Ebeko", latitude: 50.686, longitude: 156.014 }, // Ilhas Curilas
+   // { name: "Ebeko", latitude: 50.686, longitude: 156.014 }, // Ilhas Curilas
     { name: "Karymsky", latitude: 54.05, longitude: 159.45 } // Kamchatka
 ];
 
