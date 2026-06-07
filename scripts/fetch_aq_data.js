@@ -17,20 +17,22 @@ const VOLCANOES = [
     // Europa
     { name: "Etna", latitude: 37.751, longitude: 14.9934 }, // Itália
     { name: "Stromboli", latitude: 38.789, longitude: 15.213 }, // Itália
-    { name: "Piton de la Fournaise", latitude: -21.244, longitude: 55.708 }, // Reunião (França)
+    { name: "Piton de la Fournaise", latitude: -21.244, longitude: 55.708 }, // Reunião (França) 
+    { name: "Cumbre Vieja", latitude: 28.573, longitude: -17.838 }, // La Palma Isle Canary
+    { name: "Fagradalsfjall Island", latitude: 63.890, longitude: -22.268 }, // Island
 
     // Ásia-Pacífico
     { name: "Aso", latitude: 32.884, longitude: 131.104 }, // Japão
     { name: "Sakurajima", latitude: 31.585, longitude: 130.657 }, // Japão
     { name: "Semeru", latitude: -8.108, longitude: 112.922 }, // Indonésia
     { name: "Lewotolo", latitude: -8.272, longitude: 123.505 }, // Indonésia
-    { name: "Ibu", latitude: 1.488, longitude: 127.63 }, // Indonésia
+    // { name: "Ibu", latitude: 1.488, longitude: 127.63 }, // Indonésia
     { name: "Dukono", latitude: 1.693, longitude: 127.878 }, // Indonésia
     { name: "Krakatau", latitude: -6.1024, longitude: 105.4231 }, // Indonésia
 
     { name: "Tambora", latitude: -8.25, longitude: 118.00 }, // Indonésia
     { name: "Mayon", latitude: 13.257, longitude: 123.685 }, // Filipinas
-    { name: "Kanlaon", latitude: 10.412, longitude: 123.132 }, // Filipinas
+    // { name: "Kanlaon", latitude: 10.412, longitude: 123.132 }, // Filipinas
 
     // Antártica
     { name: "Erebus", latitude: -77.53, longitude: 167.17 }, // Antártica
